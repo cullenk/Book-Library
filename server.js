@@ -11,6 +11,7 @@ const bodyParser = require('body-parser'); //get body parser library.
 //The server needs to know the router exists
 const indexRouter = require('./routes/index');
 const authorRouter = require('./routes/authors');
+const bookRouter = require('./routes/books');
 
 //Configuring the Express Application
 app.set('view engine', 'ejs'); //sets the view engine, ejs is the view engine we're using.
@@ -28,5 +29,6 @@ db.once('open', () => console.log('Connected to Mongoose')); //Log success once 
 
 app.use('/', indexRouter); //Use the router we created.
 app.use('/authors', authorRouter); //Use the router we created, they'll all be prepended with "/authors"
+app.use('/books', bookRouter);
 
 app.listen(process.env.PORT || 3000); //pulls from an environment variable
